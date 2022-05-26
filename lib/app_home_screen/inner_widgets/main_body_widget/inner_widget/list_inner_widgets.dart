@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'heading_widget.dart';
+import '../../heading_widget/inner_widget/heading_inner.dart';
 
 class ListInnerItem extends StatelessWidget {
   const ListInnerItem({
@@ -36,7 +36,6 @@ class ListInnerItem extends StatelessWidget {
 }
 
 class OperationWidget extends StatelessWidget {
-
   const OperationWidget({
     Key? key,
     required this.onPressEdit,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'inner_widget/heading_inner.dart';
 
 class HeadingWidget extends StatelessWidget {
   const HeadingWidget({
@@ -22,17 +23,3 @@ class HeadingWidget extends StatelessWidget {
   }
 }
 
-class HeadingNameInnerWidget extends StatelessWidget {
-  const HeadingNameInnerWidget({
-    Key? key,
-    required this.title
-  }) : super(key: key);
-
-  final headingTextStyle = const TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(child: Text(title, style: headingTextStyle, textAlign: TextAlign.center,));
-  }
-}

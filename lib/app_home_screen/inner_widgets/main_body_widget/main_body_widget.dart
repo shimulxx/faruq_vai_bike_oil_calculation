@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'list_inner_widgets.dart';
+import 'inner_widget/list_inner_widgets.dart';
 
 class MainBodyWidget extends StatelessWidget {
   const MainBodyWidget({
