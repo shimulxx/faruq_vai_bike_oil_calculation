@@ -22,6 +22,7 @@ void easyLoadingUpdate(){
     //..customAnimation = CustomAnimation();
 }
 
+//start here
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   easyLoadingUpdate();
