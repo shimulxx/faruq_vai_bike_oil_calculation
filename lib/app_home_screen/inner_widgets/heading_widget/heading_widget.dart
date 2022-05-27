@@ -14,7 +14,7 @@ class HeadingWidget extends StatelessWidget {
       child: Row(
         children: const [
           HeadingNameInnerWidget(title: 'Date',),
-          HeadingNameInnerWidget(title: 'Kilometer',),
+          HeadingNameInnerWidget(title: 'Meter(km)',),
           HeadingNameInnerWidget(title: 'Litre',),
           HeadingNameInnerWidget(title: 'Operation',),
         ],

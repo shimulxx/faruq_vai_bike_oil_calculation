@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../app_constants/app_colors.dart';
+
 class BikeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BikeAppBar({
     Key? key,
@@ -12,10 +14,11 @@ class BikeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: kAppBarColor,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text('Bike Mileage Calculation'),
+          const Text('BIKE MILEAGE CALCULATOR'),
           Row(
             children: [
               GestureDetector(
