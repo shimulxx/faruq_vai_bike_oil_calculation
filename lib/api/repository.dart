@@ -6,6 +6,7 @@ abstract class Repository{
   BikeOilEntry? readById({required int id});
   List<BikeOilEntry> deleteById({required int id});
   List<BikeOilEntry> getAll();
+  List<BikeOilEntry> removeAll();
 }
 
 class RepositoryImp implements Repository{
@@ -13,7 +14,7 @@ class RepositoryImp implements Repository{
 
   RepositoryImp({required this.entries});
 
-  List<BikeOilEntry> getUpdatedList() => entries.query().build().find();
+  List<BikeOilEntry> getUpdatedList() => entries.query().build().find().reversed.toList();
 
   @override
   List<BikeOilEntry> createUpdate({required BikeOilEntry bikeOilEntry}) {
@@ -35,6 +36,12 @@ class RepositoryImp implements Repository{
 
   @override
   List<BikeOilEntry> getAll() {
+    return getUpdatedList();
+  }
+
+  @override
+  List<BikeOilEntry> removeAll() {
+    entries.removeAll();
     return getUpdatedList();
   }
 }

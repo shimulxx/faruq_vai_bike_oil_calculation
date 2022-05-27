@@ -19,7 +19,7 @@ class ListInnerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 45,
+      height: 55,
       child: Card(
         elevation: 4,
         child: Row(

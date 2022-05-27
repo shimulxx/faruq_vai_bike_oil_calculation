@@ -57,3 +57,18 @@ class GetAllUseCaseImp implements GetAllUseCase{
   }
 
 }
+
+abstract class RemoveAllUseCase{
+  List<BikeOilEntry> removeAll();
+}
+
+class RemoveAllUseCaseImp implements RemoveAllUseCase{
+  final Repository repository;
+  RemoveAllUseCaseImp({required this.repository});
+
+  @override
+  List<BikeOilEntry> removeAll() {
+    return repository.removeAll();
+  }
+
+}

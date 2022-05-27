@@ -4,12 +4,12 @@ import 'inner_items/dialog_input_widget.dart';
 
 Future<dynamic> addEditAlertDialog({
   required BuildContext context,
-  required bool isAddOperation,
+  required int id,
   required String initialMeterValue,
   required String initialLitreValue
 }){
 
-  final title = isAddOperation ? 'Add New Item' : 'Edit New Item';
+  final title = id == 0 ? 'Add New Item' : 'Edit New Item';
 
   return showDialog(
       context: context,
@@ -41,7 +41,7 @@ Future<dynamic> addEditAlertDialog({
             ),
             DialogButton(
               title: 'Ok',
-              onTap: () => Navigator.pop(context, {'add' : isAddOperation, 'meter' : meterValue, 'litre' : litreValue})
+              onTap: () => Navigator.pop(context, {'id' : id, 'meter' : meterValue, 'litre' : litreValue})
             )
           ],
         );

@@ -17,7 +17,7 @@ Future<dynamic> deleteAlertDialog({required BuildContext context, int? id}){
             ),
             DialogButton(
                 title: 'Ok',
-                onTap: () => Navigator.pop(context, true)
+                onTap: () => Navigator.pop(context, {'id': id})
             )
           ],
         );
