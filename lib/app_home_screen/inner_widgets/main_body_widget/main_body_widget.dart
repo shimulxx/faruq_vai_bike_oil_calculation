@@ -21,6 +21,9 @@ class MainBodyWidget extends StatelessWidget {
           if(state.message.isNotEmpty){
             EasyLoading.showToast(state.message);
           }
+          else if(state.resultMessage.isNotEmpty){
+            EasyLoading.showInfo(state.resultMessage);
+          }
         },
         builder: (context, state) {
           if(state.isLoading){
@@ -54,7 +57,7 @@ class MainBodyWidget extends StatelessWidget {
                         else { cubit.showCancelOperation(); }
                       },
                       onPressView: () {
-                        print('view');
+                        cubit.showCalculationByIndex(index);
                       },
                     );
                   },

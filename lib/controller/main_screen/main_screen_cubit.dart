@@ -12,12 +12,13 @@ class MainScreenCubit extends Cubit<MainScreenCubitState>{
   final RemoveAllUseCase removeAllUseCase;
   final AppDateTimeFormatUseCase appDateTimeFormatUseCase;
 
-  final operationCancel = 'Operation Cancel';
+  final operationCancel = 'Operation canceled';
   final meterEmpty = 'Meter field is empty!';
   final litreEmpty = 'Litre field is empty!';
   final invalidMeter = 'Invalid meter input!';
   final invalidLitre = 'Invalid litre input!';
   final operationSuccess = 'Operation Successful!';
+  final singleItemError = 'Last Item, Calculation is not possible';
 
   MainScreenCubit({
     required this.deleteUseCase,
@@ -32,6 +33,39 @@ class MainScreenCubit extends Cubit<MainScreenCubitState>{
     emit(state.copyWith(isLoading: true));
     final curList = getAllUseCase.getAll();
     emit(state.copyWith(isLoading: false, list: curList));
+  }
+
+  void _emitResultMessage(String resultMessage){
+    emit(state.copyWith(resultMessage: resultMessage));
+    emit(state.copyWith(resultMessage: ''));
+  }
+
+  void showCalculationByIndex(int index){
+    final curList = state.list;
+    if(index != curList.length - 1){
+      try{
+        final secondItem = curList[index + 1];
+        final secondLitre = double.parse(secondItem.litre);
+        if(secondLitre == 0.0) { throw UnsupportedError('Division by 0 occurs!'); }
+        else{
+          final firstItem = curList[index];
+          final firstMeter = double.parse(firstItem.meter);
+          final secondMeter = double.parse(secondItem.meter);
+          final distance = firstMeter - secondMeter;
+          final result = (distance / secondLitre).toStringAsFixed(2);
+          final resultMessage = 'Bike oil usage: $result km/litre';
+          _emitResultMessage(resultMessage);
+        }
+      }
+      catch(e){
+        final errorMessage = e.toString();
+        _emitMessage(errorMessage);
+      }
+
+    }
+    else{
+      _emitMessage(singleItemError);
+    }
   }
 
   void _emitMessage(String message){

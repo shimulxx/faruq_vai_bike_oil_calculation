@@ -6,7 +6,8 @@ import 'injection_work/injection_container.dart';
 
 void easyLoadingUpdate(){
   EasyLoading.instance
-    ..displayDuration = const Duration(milliseconds: 2000)
+    ..displayDuration = const Duration(milliseconds: 3000)
+    ..infoWidget = const Icon(Icons.remove_red_eye, color: Colors.white, size: 50,)
     ..indicatorType = EasyLoadingIndicatorType.fadingCircle
     ..loadingStyle = EasyLoadingStyle.dark
     ..toastPosition = EasyLoadingToastPosition.bottom
