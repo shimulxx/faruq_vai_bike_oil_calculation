@@ -17,6 +17,7 @@ class DialogInputWidget extends StatelessWidget {
     return TextFormField(
       initialValue: initialValue,
       onChanged: onTextChange,
+      keyboardType: TextInputType.number,
       decoration: InputDecoration(
         hintText: hintText,
         filled: true,
