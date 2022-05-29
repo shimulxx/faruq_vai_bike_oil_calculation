@@ -21,9 +21,6 @@ class MainBodyWidget extends StatelessWidget {
           if(state.message.isNotEmpty){
             EasyLoading.showToast(state.message);
           }
-          else if(state.resultMessage.isNotEmpty){
-            EasyLoading.showInfo(state.resultMessage);
-          }
         },
         builder: (context, state) {
           if(state.isLoading){
@@ -38,6 +35,7 @@ class MainBodyWidget extends StatelessWidget {
                   delegate: SliverChildBuilderDelegate((context, index) {
                     final curItem = curList[index];
                     return ListInnerItem(
+                      kmPerLitre: cubit.getCalculationByIndex(index),
                       date: curItem.date,
                       kilometers: curItem.meter,
                       litres: curItem.litre,
@@ -56,9 +54,9 @@ class MainBodyWidget extends StatelessWidget {
                         if(result != null) { cubit.deleteById(result['id']); }
                         else { cubit.showCancelOperation(); }
                       },
-                      onPressView: () {
-                        cubit.showCalculationByIndex(index);
-                      },
+                      // onPressView: () {
+                      //   cubit.showCalculationByIndex(index);
+                      // },
                     );
                   },
                     childCount: curList.length,

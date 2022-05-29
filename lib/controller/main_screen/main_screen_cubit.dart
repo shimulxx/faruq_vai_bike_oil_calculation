@@ -35,12 +35,7 @@ class MainScreenCubit extends Cubit<MainScreenCubitState>{
     emit(state.copyWith(isLoading: false, list: curList));
   }
 
-  void _emitResultMessage(String resultMessage){
-    emit(state.copyWith(resultMessage: resultMessage));
-    emit(state.copyWith(resultMessage: ''));
-  }
-
-  void showCalculationByIndex(int index){
+  String getCalculationByIndex(int index){
     final curList = state.list;
     if(index != curList.length - 1){
       try{
@@ -53,19 +48,16 @@ class MainScreenCubit extends Cubit<MainScreenCubitState>{
           final secondMeter = double.parse(secondItem.meter);
           final distance = firstMeter - secondMeter;
           final result = (distance / secondLitre).toStringAsFixed(2);
-          final resultMessage = 'Bike oil usage: $result km/litre';
-          _emitResultMessage(resultMessage);
+          return result;
         }
       }
       catch(e){
-        final errorMessage = e.toString();
-        _emitMessage(errorMessage);
+        const errorMessage = 'Div by 0!';
+        return errorMessage;
       }
 
     }
-    else{
-      _emitMessage(singleItemError);
-    }
+    else{ return '0'; }
   }
 
   void _emitMessage(String message){

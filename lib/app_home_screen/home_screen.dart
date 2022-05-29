@@ -1,5 +1,5 @@
-import 'package:faruq_vai_bike/app_alert_dialog/for_delete/for_delete_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../app_alert_dialog/add_edit/app_alert_dialog.dart';
 import '../controller/main_screen/main_screen_cubit.dart';
 import 'inner_widgets/bike_app_bar.dart';
@@ -25,9 +25,10 @@ class HomeScreen extends StatelessWidget {
           cubit.createUpdate(mp);
         },
         onPressClear: () async{
-          final value = await deleteAlertDialog(context: context);
-          if(value != null){ cubit.deleteAll(); }
-          else { cubit.showCancelOperation(); }
+          // final value = await deleteAlertDialog(context: context);
+          // if(value != null){ cubit.deleteAll(); }
+          // else { cubit.showCancelOperation(); }
+          EasyLoading.showInfo('Button disabled');
         },
       ),
       body: Column(

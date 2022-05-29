@@ -7,14 +7,14 @@ class ListInnerItem extends StatelessWidget {
     required this.date,
     required this.kilometers,
     required this.litres,
-    required this.onPressView,
     required this.onPressDelete,
     required this.onPressEdit,
+    required this.kmPerLitre,
   }) : super(key: key);
 
-  final String date, kilometers, litres;
+  final String date, kilometers, litres, kmPerLitre;
 
-  final Function() onPressView, onPressEdit, onPressDelete;
+  final Function()  onPressEdit, onPressDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,8 @@ class ListInnerItem extends StatelessWidget {
             HeadingNameInnerWidget(title: date,),
             HeadingNameInnerWidget(title: kilometers,),
             HeadingNameInnerWidget(title: litres,),
-            OperationWidget(onPressDelete: onPressDelete, onPressEdit: onPressEdit,onPressView: onPressView,)
+            HeadingNameInnerWidget(title: kmPerLitre,),
+            OperationWidget(onPressDelete: onPressDelete, onPressEdit: onPressEdit)
           ],
         ),
       ),
@@ -40,23 +41,15 @@ class OperationWidget extends StatelessWidget {
     Key? key,
     required this.onPressEdit,
     required this.onPressDelete,
-    required this.onPressView,
   }) : super(key: key);
 
-  final Function() onPressView, onPressEdit, onPressDelete;
+  final Function()  onPressEdit, onPressDelete;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Row(
         children:  [
-          Expanded(
-            child: GestureDetector(
-              onTap: onPressView,
-              child: const AbsorbPointer(child: Icon(Icons.remove_red_eye, color: Color(0xff038006)),
-              ),
-            ),
-          ),
           Expanded(
             child: GestureDetector(
               onTap: onPressEdit,
